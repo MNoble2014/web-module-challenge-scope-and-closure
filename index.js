@@ -29,16 +29,18 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   
   1. What is the difference between counter1 and counter2?
 
-On counter1 the variable is within the function and counter2 it is outside of the function.
+Counter1 is a High Order Function and counter2 is not. With High Order Functions they receive the function as the argument or return it as the output.
    
   2. Which of the two uses a closure? How can you tell?
 
-counter1 uses a closure because it is calling within the function
-  
+The function that uses a closure is counter1 because it has an outer function that is called by the inner function.
+
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
 
-I'm not sure when either would be preferrable.
+If you need your function to be used more than once you would use counter1.
+While counter2 may be easier to write it may not always give closure.
+
 */
 
 // counter1 code
@@ -68,8 +70,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+ return Math.floor(Math.random() * 3);
 }
 
 
@@ -87,9 +89,21 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inning, numInnings){
+  let score = {
+    Home: 0,
+    Away: 0
+  }
+
+  for(let i = 0; i < numInnings; i++) {
+    score.Home += inning();
+    score.Away += inning();
+    console.log(inning());
+  }
+  return score;
 }
+
+console.log('Task 3', finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
