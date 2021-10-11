@@ -160,11 +160,32 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard() {
-  
+function scoreboard(inning, numberInnings) {
+  let score = {
+    'Home': 0,
+    'Away': 0,
+  }
+  for(let i = 0; i < numberInnings; i++) {
+    score.Home += inning();
+    score.Away += inning();
+
+    function numberSuffix() {
+      if(i+ 1 === 1) {
+        return 'st'
+      } else if (i + 1 === 2) {
+        return 'nd'
+      } else if (i + 1 === 3) {
+        return 'rd'
+      } else {
+        return 'th'
+      }
+    }
+    console.log(`${i + 1} ${numberSuffix()} inning: ${score.Home} - ${score.Away}`);
+  }
+  console.log(`Final Score : ${score.Home} - ${score.Away}`);
 }
 
-
+console.log('Task 5', scoreboard(inning, 9));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
